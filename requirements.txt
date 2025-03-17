@@ -1,5 +1,6 @@
+numpy==1.24.3
+pandas==2.0.3
 praw==7.7.1
-pandas==2.1.1
 supabase==1.0.3
 textblob==0.17.1
 schedule==1.2.0
