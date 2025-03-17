@@ -5,10 +5,14 @@ WORKDIR /app
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     gcc \
+    g++ \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy requirements and install dependencies
+# Copy requirements first to leverage Docker cache
 COPY requirements.txt .
+
+# Install dependencies with specific numpy version first
+RUN pip install --no-cache-dir numpy==1.24.3
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Download NLTK data
